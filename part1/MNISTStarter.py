@@ -21,18 +21,12 @@ mnist = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 print("--Process data--")
-x_train, x_test = x_train / 255.0, x_test / 255.0
-
-# x_train.shape
-
-# Re-shape and normalize
 input_shape = (28, 28, 1) # each image is 28x28 pixels
 x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
 x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
-x_train = x_train.astype('float32')
-x_test = x_test.astype('float32')
-x_train /= 255
-x_test /= 255
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+# x_train.shape
 
 print("--Make model--")
 model = tf.keras.models.Sequential([
@@ -54,12 +48,12 @@ model.fit(x_train, y_train, epochs=10, verbose=2)
 print("--Evaluate model: TEST DATA --")
 model_loss, model_acc = model.evaluate(x_test,  y_test, verbose=2)
 print(f"Model Loss:    {model_loss:.2f}")
-print(f"Model Accuracy: {model_acc*100:.0f}%")
+print(f"Model Accuracy: {model_acc*100:.1f}%")
 
 print("--Evaluate model: TRAINING DATA --")
 model_loss_train, model_acc_train = model.evaluate(x_train,  y_train, verbose=2)
 print(f"Model Loss:    {model_loss_train:.2f}")
-print(f"Model Accuracy: {model_acc_train*100:.0f}%")
+print(f"Model Accuracy: {model_acc_train*100:.1f}%")
 
 #Save Model to MNIST.h5
 
