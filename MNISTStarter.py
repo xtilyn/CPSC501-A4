@@ -54,11 +54,11 @@ model.fit(x_train, y_train, epochs=10, verbose=2)
 print("--Evaluate model: TEST DATA --")
 model_loss, model_acc = model.evaluate(x_test,  y_test, verbose=2)
 print(f"Model Loss:    {model_loss:.2f}")
-print(f"Model Accuracy: {model_acc*100:.1f}%")
+print(f"Model Accuracy: {model_acc*100:.0f}%")
 
 print("--Evaluate model: TRAINING DATA --")
 model_loss_train, model_acc_train = model.evaluate(x_train,  y_train, verbose=2)
-print(f"Model Loss:    {model_loss_train:.0f}")
+print(f"Model Loss:    {model_loss_train:.2f}")
 print(f"Model Accuracy: {model_acc_train*100:.0f}%")
 
 #Save Model to MNIST.h5
