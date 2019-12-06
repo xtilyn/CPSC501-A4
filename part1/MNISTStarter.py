@@ -55,7 +55,7 @@ model_loss_train, model_acc_train = model.evaluate(x_train,  y_train, verbose=2)
 print(f"Model Loss:    {model_loss_train:.2f}")
 print(f"Model Accuracy: {model_acc_train*100:.1f}%")
 
-#Save Model to MNIST.h5
+model.save('MNIST.h5')
 
 from google.colab import files
 files.download('MNIST.h5')
